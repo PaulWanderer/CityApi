@@ -76,39 +76,39 @@ namespace CityAPI.Migrations
                     );
                 });
 
-            modelBuilder.Entity("CityAPI.Models.PointOfInterestDto", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+           // modelBuilder.Entity("CityAPI.Models.PointOfInterestDto", b =>
+                //{
+                //    b.Property<int>("Id")
+                //        .ValueGeneratedOnAdd()
+                //        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CityId");
+                //    b.Property<int?>("CityId");
 
-                    b.Property<string>("Description");
+                //    b.Property<string>("Description");
 
-                    b.Property<string>("Name");
+                //    b.Property<string>("Name");
 
-                    b.HasKey("Id");
+                //    b.HasKey("Id");
 
-                    b.HasIndex("CityId");
+                //    b.HasIndex("CityId");
 
-                    b.ToTable("PointOfInterestDto");
-                });
+                //    b.ToTable("PointOfInterestDto");
+                //});
 
             modelBuilder.Entity("CityAPI.Entities.PointOfInterest", b =>
                 {
                     b.HasOne("CityAPI.Entities.City", "City")
-                        .WithMany()
+                        .WithMany("PointsOfInterest")
                         .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("CityAPI.Models.PointOfInterestDto", b =>
-                {
-                    b.HasOne("CityAPI.Entities.City")
-                        .WithMany("PointsOfInterest")
-                        .HasForeignKey("CityId");
-                });
+            //modelBuilder.Entity("CityAPI.Models.PointOfInterestDto", b =>
+            //    {
+            //        b.HasOne("CityAPI.Entities.City")
+            //            .WithMany("PointsOfInterest")
+            //            .HasForeignKey("CityId");
+            //    });
 #pragma warning restore 612, 618
         }
     }

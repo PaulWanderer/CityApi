@@ -17,12 +17,18 @@ namespace CityAPI.Controllers
     {
         private readonly ILogger<PointsOfInterestController> _logger;
         private readonly IMailService _mailService;
+        private readonly ICityInfoRepository _cityInfoRepository;
 
-        public PointsOfInterestController(ILogger<PointsOfInterestController> logger, IMailService mailService)
+        private const string CityNotFound = "No city was found with that ID";
+
+        public PointsOfInterestController(ILogger<PointsOfInterestController> logger, IMailService mailService, ICityInfoRepository cityInfoRepository)
         {
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            _mailService = mailService ?? throw new ArgumentNullException(nameof(mailService));
+            _logger = logger;
+            _mailService = mailService;
+            _cityInfoRepository = cityInfoRepository;
         }
+
+        
 
         [HttpGet]
         public IActionResult GetPointsOfInterest(int cityId)
@@ -30,21 +36,12 @@ namespace CityAPI.Controllers
             try
             {
                 // find city
-                var city = CitiesRepository.Current.Cities.FirstOrDefault(m => m.Id == cityId);
-
-                if (city == null)
+                if (!VerifyCityExists(cityId))
                 {
-                    _logger.LogInformation($"City with id {0} was not found", cityId);
-                    return NotFound();
+                    return NotFound(CityNotFound);
                 }
 
-                //fidn POI
-                var pointsOfInterest = city.PointsOfInterest;
-
-                if (pointsOfInterest == null)
-                {
-                    return NotFound();
-                }
+                var pointsOfInterest = _cityInfoRepository.GetPointsOfInterest(cityId);
 
                 return Ok(pointsOfInterest);
             }
@@ -60,19 +57,11 @@ namespace CityAPI.Controllers
         public IActionResult GetPointOfInterest(int cityId, int id)
         {
             // find city
-            var city = CitiesRepository.Current.Cities.FirstOrDefault(m => m.Id == cityId);
-
-            if (city == null)
+            if (!VerifyPoiExists(cityId, id))
             {
-                return NotFound();
+                return NotFound(CityNotFound);
             }
-
-            var pointOfInterest = city.PointsOfInterest.FirstOrDefault(m => m.Id == id);
-
-            if (pointOfInterest == null)
-            {
-                return NotFound();
-            }
+            var pointOfInterest = _cityInfoRepository.GetPointOfInterest(cityId, id);
 
             return Ok(pointOfInterest);
         }
@@ -214,6 +203,16 @@ namespace CityAPI.Controllers
             _mailService.Send(subejct, message);
 
             return NoContent();
+        }
+
+        private bool VerifyCityExists(int cityId)
+        {
+            return _cityInfoRepository.CityExists(cityId);
+        }
+
+        private bool VerifyPoiExists(int cityId, int id)
+        {
+            return _cityInfoRepository.PoiExists(cityId, id);
         }
     }
 }

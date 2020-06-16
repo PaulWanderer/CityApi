@@ -13,10 +13,10 @@ namespace CityAPI.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public int CityId { get; set; }
-
         [ForeignKey("CityId")]
         public City City { get; set; }
+
+        public int CityId { get; set; }
 
         [Required]
         [MaxLength(200)]

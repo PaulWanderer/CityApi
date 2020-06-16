@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using CityAPI.Contexts;
 using CityAPI.Services;
 using Microsoft.AspNetCore.Builder;
@@ -30,6 +31,8 @@ namespace CityAPI
             services.AddMvc()
                 .AddMvcOptions(m => m.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
             services.AddScoped<ICityInfoRepository, CityInfoRepository>();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 
 #if DEBUG
             services.AddTransient<IMailService, LocalMailService>();

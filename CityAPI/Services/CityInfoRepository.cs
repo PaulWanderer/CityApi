@@ -41,5 +41,15 @@ namespace CityAPI.Services
         {
             return _cityContext.PointsOfInterest.FirstOrDefault(m => m.CityId == cityId && m.Id == id);
         }
+
+        public bool CityExists(int cityId)
+        {
+            return _cityContext.Cities.Any(m => m.Id == cityId);
+        }
+
+        public bool PoiExists(int cityId, int id)
+        {
+            return _cityContext.PointsOfInterest.Any(m => m.CityId == cityId && m.Id == id);
+        }
     }
 }
