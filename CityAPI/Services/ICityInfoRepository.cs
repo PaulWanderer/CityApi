@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CityAPI.Entities;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CityAPI.Services
 {
@@ -19,5 +20,11 @@ namespace CityAPI.Services
         bool CityExists(int cityId);
 
         bool PoiExists(int cityId, int id);
+
+        void AddPointOfInterestForCity(int cityId,PointOfInterest pointOfInterest);
+
+        void DeletePointOfInterest(PointOfInterest pointOfInterest);
+
+        bool Save();
     }
 }
