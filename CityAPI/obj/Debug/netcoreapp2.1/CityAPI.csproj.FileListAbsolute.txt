@@ -1,0 +1,15 @@
+C:\code\City\CityAPI\CityAPI\bin\Debug\netcoreapp2.1\CityAPI.deps.json
+C:\code\City\CityAPI\CityAPI\bin\Debug\netcoreapp2.1\CityAPI.runtimeconfig.json
+C:\code\City\CityAPI\CityAPI\bin\Debug\netcoreapp2.1\CityAPI.runtimeconfig.dev.json
+C:\code\City\CityAPI\CityAPI\bin\Debug\netcoreapp2.1\CityAPI.dll
+C:\code\City\CityAPI\CityAPI\bin\Debug\netcoreapp2.1\CityAPI.pdb
+C:\code\City\CityAPI\CityAPI\obj\Debug\netcoreapp2.1\CityAPI.csprojAssemblyReference.cache
+C:\code\City\CityAPI\CityAPI\obj\Debug\netcoreapp2.1\CityAPI.csproj.CoreCompileInputs.cache
+C:\code\City\CityAPI\CityAPI\obj\Debug\netcoreapp2.1\CityAPI.RazorAssemblyInfo.cache
+C:\code\City\CityAPI\CityAPI\obj\Debug\netcoreapp2.1\CityAPI.RazorAssemblyInfo.cs
+C:\code\City\CityAPI\CityAPI\obj\Debug\netcoreapp2.1\CityAPI.AssemblyInfoInputs.cache
+C:\code\City\CityAPI\CityAPI\obj\Debug\netcoreapp2.1\CityAPI.AssemblyInfo.cs
+C:\code\City\CityAPI\CityAPI\obj\Debug\netcoreapp2.1\CityAPI.RazorTargetAssemblyInfo.cache
+C:\code\City\CityAPI\CityAPI\obj\Debug\netcoreapp2.1\CityAPI.dll
+C:\code\City\CityAPI\CityAPI\obj\Debug\netcoreapp2.1\CityAPI.pdb
+C:\code\City\CityAPI\CityAPI\bin\Debug\netcoreapp2.1\nlog.config
