@@ -20,7 +20,7 @@ namespace CityAPI.Services
 
         public IEnumerable<City> GetCities()
         {
-            return _cityContext.Cities.OrderBy(m => m.Name);
+            return _cityContext.Cities.OrderBy(m => m.Id);
         }
 
         public City GetCity(int cityId, bool includePointsOfInterest = false)
@@ -35,12 +35,13 @@ namespace CityAPI.Services
 
         public IEnumerable<PointOfInterest> GetPointsOfInterest(int cityId)
         {
-            return _cityContext.PointsOfInterest.Where(m => m.CityId == cityId);
+            return _cityContext.PointsOfInterest.Where(i => i.CityId == cityId);
         }
 
         public PointOfInterest GetPointOfInterest(int cityId, int id)
         {
             return _cityContext.PointsOfInterest.FirstOrDefault(m => m.CityId == cityId && m.Id == id);
+
         }
 
         public void AddPointOfInterestForCity(int cityId, PointOfInterest pointOfInterest)
@@ -61,12 +62,7 @@ namespace CityAPI.Services
 
         public bool CityExists(int cityId)
         {
-            return _cityContext.Cities.Any(m => m.Id == cityId);
-        }
-
-        public bool PoiExists(int cityId, int id)
-        {
-            return _cityContext.PointsOfInterest.Any(m => m.CityId == cityId && m.Id == id);
+            return _cityContext.Cities.Any(i => i.Id == cityId);
         }
     }
 }

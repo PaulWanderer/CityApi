@@ -43,51 +43,50 @@ namespace CityAPI.Contexts
 
 
             modelBuilder.Entity<PointOfInterest>()
-              .HasData(
-                new PointOfInterest()
-                {
-                    Id = 1,
-                    CityId = 1,
-                    Name = "Central Park",
-                    Description = "The most visited urban park in the United States."
+                .HasData(
+            new PointOfInterest()
+            {
+                Id = 1,
+                CityId = 1,
+                Name = "Central Park",
+                Description = "The most visited urban park in the United States."
 
-                },
+            },
+            new PointOfInterest()
+            {
+                Id = 2,
+                CityId = 1,
+                Name = "Empire State Building",
+                Description = "A 102-story skyscraper located in Midtown Manhattan."
+            },
                 new PointOfInterest()
                 {
-                    Id = 2,
-                    CityId = 1,
-                    Name = "Empire State Building",
-                    Description = "A 102-story skyscraper located in Midtown Manhattan."
-                },
-                  new PointOfInterest()
-                  {
-                      Id = 3,
-                      CityId = 2,
-                      Name = "Cathedral",
-                      Description = "A Gothic style cathedral, conceived by architects Jan and Pieter Appelmans."
-                  },
-                new PointOfInterest()
-                {
-                    Id = 4,
+                    Id = 3,
                     CityId = 2,
-                    Name = "Antwerp Central Station",
-                    Description = "The the finest example of railway architecture in Belgium."
+                    Name = "Cathedral",
+                    Description = "A Gothic style cathedral, conceived by architects Jan and Pieter Appelmans."
                 },
-                new PointOfInterest()
-                {
-                    Id = 5,
-                    CityId = 3,
-                    Name = "Eiffel Tower",
-                    Description = "A wrought iron lattice tower on the Champ de Mars, named after engineer Gustave Eiffel."
-                },
-                new PointOfInterest()
-                {
-                    Id = 6,
-                    CityId = 3,
-                    Name = "The Louvre",
-                    Description = "The world's largest museum."
-                }
-                );
+            new PointOfInterest()
+            {
+                Id = 4,
+                CityId = 2,
+                Name = "Antwerp Central Station",
+                Description = "The the finest example of railway architecture in Belgium."
+            },
+            new PointOfInterest()
+            {
+                Id = 5,
+                CityId = 3,
+                Name = "Eiffel Tower",
+                Description = "A wrought iron lattice tower on the Champ de Mars, named after engineer Gustave Eiffel."
+            },
+            new PointOfInterest()
+            {
+                Id = 6,
+                CityId = 3,
+                Name = "The Louvre",
+                Description = "The world's largest museum."
+            });
         }
 
     }

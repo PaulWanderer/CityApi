@@ -8,6 +8,7 @@ using CityAPI.Entities;
 using CityAPI.Models;
 using CityAPI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace CityAPI.Controllers
 {
@@ -17,26 +18,27 @@ namespace CityAPI.Controllers
     {
         private readonly ICityInfoRepository _cityRepository;
         private readonly IMapper _mapper;
+        private readonly ILogger<CitiesController> _logger;
 
         private const string CityNotFound = "No city was found with that ID";
 
-        public CitiesController(ICityInfoRepository cityRepository, IMapper mapper)
+        public CitiesController(ICityInfoRepository cityRepository, IMapper mapper, ILogger<CitiesController> logger)
         {
             _cityRepository = cityRepository;
             _mapper = mapper;
+            _logger = logger;
         }
-        
 
         [HttpGet]
-        public IActionResult GetCities()
+        public async Task<IActionResult> GetCities()
         {
             var cities = _cityRepository.GetCities().ToList();
 
-            return Ok( _mapper.Map<IEnumerable<CityWithoutPoiDto>>(cities));
+            return Ok(_mapper.Map<IEnumerable<CityWithoutPoiDto>>(cities));
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetCity(int id, bool includePointsOfInterest = false)
+        public async Task<IActionResult> GetCity(int id, bool includePointsOfInterest = false)
         {
             // find city
             if (!VerifyCityExists(id))

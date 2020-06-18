@@ -17,14 +17,12 @@ namespace CityAPI.Services
 
         PointOfInterest GetPointOfInterest(int cityId, int id);
 
-        bool CityExists(int cityId);
-
-        bool PoiExists(int cityId, int id);
-
         void AddPointOfInterestForCity(int cityId,PointOfInterest pointOfInterest);
 
         void DeletePointOfInterest(PointOfInterest pointOfInterest);
 
         bool Save();
+
+        bool CityExists(int cityId);
     }
 }

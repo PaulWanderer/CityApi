@@ -58,7 +58,7 @@ namespace CityAPI.Controllers
         public IActionResult GetPointOfInterest(int cityId, int id)
         {
             // find city
-            if (!VerifyPoiExists(cityId, id))
+            if (!VerifyCityExists(cityId))
             {
                 return NotFound(CityNotFound);
             }
@@ -198,11 +198,6 @@ namespace CityAPI.Controllers
         private bool VerifyCityExists(int cityId)
         {
             return _cityInfoRepository.CityExists(cityId);
-        }
-
-        private bool VerifyPoiExists(int cityId, int id)
-        {
-            return _cityInfoRepository.PoiExists(cityId, id);
         }
     }
 }
