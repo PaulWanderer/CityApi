@@ -43,15 +43,14 @@ namespace CityAPI
                 throw new ArgumentNullException(nameof(source));
             }
 
-            var enumerable = source as T[] ?? source.ToArray();
-            foreach (var i in enumerable)
+            foreach (var i in source)
             {
                 if (predicate(i))
                 {
                     return i;
                 }
             }
-            return enumerable.ToArray()[0];
+            return default(T);
         }
     }
 }
